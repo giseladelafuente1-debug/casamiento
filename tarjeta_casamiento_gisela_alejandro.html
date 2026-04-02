@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gisela & Alejandro · 01.11.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --sage:#4a7a50;--sage-mid:#7a9e7e;--sage-light:#c8d4c0;
+  --sage-pale:#eef4eb;--cream:#f9f6f1;--beige:#ede8df;
+  --beige-mid:#d8e4d0;--text-dark:#222222;--text-mid:#444444;--text-muted:#6a8e6e;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--beige);font-family:'Montserrat',sans-serif;color:var(--text-dark);display:flex;justify-content:center;padding:32px 16px 64px;}
+.card{background:var(--cream);width:100%;max-width:480px;border-radius:4px;overflow:hidden;box-shadow:0 8px 48px rgba(74,122,80,0.12);}
+
+/* ── SOBRE ── */
+#envelope-screen{
+  background:linear-gradient(160deg,#3d6b43 0%,#4a7a50 55%,#5a8f60 100%);
+  display:flex;align-items:center;justify-content:center;
+  padding:80px 40px;cursor:pointer;position:relative;overflow:hidden;min-height:340px;
+  -webkit-tap-highlight-color:transparent;
+  width:100%;border:none;outline:none;
+}
+#envelope-screen::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 110%,rgba(255,255,255,0.08) 0%,transparent 70%);pointer-events:none;}
+.env-wrap{display:flex;flex-direction:column;align-items:center;gap:24px;position:relative;z-index:1;}
+.envelope{width:140px;height:100px;position:relative;}
+.env-body{width:140px;height:100px;background:#f9f6f1;border-radius:4px;position:absolute;bottom:0;left:0;}
+.env-flap{width:0;height:0;border-left:70px solid transparent;border-right:70px solid transparent;border-top:52px solid #d8e4d0;position:absolute;top:0;left:0;transform-origin:top center;transition:transform 0.65s cubic-bezier(.4,0,.2,1);z-index:3;}
+.env-bottom{width:0;height:0;border-left:70px solid transparent;border-right:70px solid transparent;border-bottom:52px solid #c8d4c0;position:absolute;bottom:0;left:0;z-index:1;}
+.env-left{width:0;height:0;border-left:56px solid #e0ead8;border-top:50px solid transparent;border-bottom:50px solid transparent;position:absolute;top:0;left:0;z-index:2;}
+.env-right{width:0;height:0;border-right:56px solid #d8e4d0;border-top:50px solid transparent;border-bottom:50px solid transparent;position:absolute;top:0;right:0;z-index:2;}
+.env-letter{position:absolute;width:110px;height:70px;background:#f9f6f1;border:1px solid #c8d4c0;border-radius:2px;bottom:10px;left:15px;z-index:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--sage);letter-spacing:2px;transition:transform 0.65s cubic-bezier(.4,0,.2,1) 0.3s;}
+.envelope.open .env-flap{transform:rotateX(180deg);}
+.envelope.open .env-letter{transform:translateY(-68px);}
+@keyframes pulse{0%,100%{opacity:.65;}50%{opacity:1;}}
+.env-tap-hint{font-size:11px;font-weight:400;letter-spacing:3px;color:rgba(255,255,255,0.7);text-transform:uppercase;text-align:center;animation:pulse 2s ease-in-out infinite;}
+
+/* ── HERO ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+#hero-content{display:none;background:linear-gradient(160deg,#3d6b43 0%,#4a7a50 55%,#5a8f60 100%);padding:64px 40px 56px;text-align:center;position:relative;overflow:hidden;}
+#hero-content::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 110%,rgba(255,255,255,0.07) 0%,transparent 70%);pointer-events:none;}
+#hero-content.visible{display:block;}
+.hero-inner{position:relative;z-index:1;}
+.hero-frame{border:1px solid rgba(255,255,255,0.25);border-radius:2px;padding:40px 32px 36px;animation:fadeUp 0.9s ease both;}
+.nos-casamos{font-size:10px;font-weight:500;letter-spacing:6px;color:rgba(255,255,255,0.75);text-transform:uppercase;margin-bottom:28px;animation:fadeUp 0.9s ease 0.1s both;}
+.monogram{font-family:'Playfair Display',serif;font-size:110px;font-weight:400;color:#ffffff;line-height:1;letter-spacing:-4px;margin-bottom:8px;animation:fadeUp 0.9s ease 0.2s both;text-shadow:0 2px 24px rgba(0,0,0,0.15);}
+.monogram .amp{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:70px;color:rgba(255,255,255,0.7);}
+.nombres{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;letter-spacing:6px;color:#ffffff;text-transform:uppercase;margin-bottom:16px;animation:fadeUp 0.9s ease 0.3s both;}
+.hero-divider{width:48px;height:1px;background:rgba(255,255,255,0.4);margin:0 auto 16px;animation:fadeUp 0.9s ease 0.35s both;}
+.fecha-hero{font-size:13px;font-weight:300;letter-spacing:4px;color:rgba(255,255,255,0.85);animation:fadeUp 0.9s ease 0.4s both;}
+
+/* ── CUERPO ── */
+#card-body{display:none;}
+#card-body.visible{display:block;}
+.section{padding:36px 36px 32px;border-bottom:1px solid var(--beige-mid);}
+.section-alt{background:var(--sage-pale);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;font-weight:400;color:var(--sage);text-align:center;margin-bottom:4px;}
+.section-sub{font-size:10px;color:var(--sage);letter-spacing:3px;text-transform:uppercase;text-align:center;margin-bottom:28px;}
+
+.fecha-bloque{display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:32px;}
+.fecha-parte{text-align:center;}
+.fecha-label{font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;display:block;margin-bottom:4px;}
+.fecha-valor{font-family:'Montserrat',sans-serif;font-size:12px;color:var(--text-dark);font-weight:400;letter-spacing:1px;}
+.fecha-dia{font-family:'Playfair Display',serif;font-size:56px;font-weight:400;color:var(--sage);line-height:1;}
+.divider-v{width:1px;height:56px;background:var(--sage-light);flex-shrink:0;}
+
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:17px;top:14px;bottom:14px;width:1px;background:var(--sage-light);}
+.tl-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px;position:relative;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:36px;flex-shrink:0;padding-top:3px;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--sage);border:2px solid var(--cream);outline:1px solid var(--sage);position:relative;z-index:1;}
+.tl-icon{font-size:17px;width:28px;text-align:center;}
+.tl-hora{font-size:10px;font-weight:500;letter-spacing:2px;color:var(--sage);text-transform:uppercase;}
+.tl-titulo{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--text-dark);margin:2px 0 3px;}
+.tl-lugar{font-size:11px;color:var(--text-mid);font-weight:400;line-height:1.5;}
+
+.btn{display:block;width:100%;padding:12px 16px;margin-top:10px;background:transparent;border:1px solid var(--sage-mid);border-radius:2px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:2.5px;color:var(--sage);text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none;-webkit-appearance:none;appearance:none;transition:background 0.2s,color 0.2s;}
+.btn:hover,.btn:active{background:var(--sage);color:var(--cream);}
+.btn-small{padding:9px 14px;font-size:9px;letter-spacing:2px;margin-top:8px;}
+.btn-solid{background:var(--sage);color:var(--cream);border-color:var(--sage);}
+.btn-solid:hover,.btn-solid:active{background:#3a6040;}
+
+.dress-texto{font-size:13px;line-height:1.85;color:var(--text-mid);text-align:center;font-weight:300;}
+.dress-alerta{margin-top:16px;padding:14px 18px;background:var(--cream);border-left:3px solid var(--sage-mid);font-size:12px;color:var(--sage);line-height:1.75;font-weight:400;}
+.body-texto{font-size:13px;line-height:1.85;color:var(--text-mid);text-align:center;font-weight:300;}
+
+/* datos bancarios — fix iOS: max-height en lugar de display:none */
+.datos-box{max-height:0;overflow:hidden;opacity:0;transition:max-height 0.45s ease,opacity 0.35s ease,margin-top 0.3s ease,padding 0.3s ease,border-color 0.3s ease;background:var(--cream);border:1px solid transparent;border-radius:2px;text-align:center;padding:0 24px;margin-top:0;}
+.datos-box.open{max-height:240px;opacity:1;padding:20px 24px;margin-top:16px;border-color:var(--sage-light);}
+.dato-label{font-size:10px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:3px;}
+.dato-valor{font-family:'Playfair Display',serif;font-size:16px;color:var(--sage);margin-bottom:14px;}
+.dato-valor:last-child{margin-bottom:0;}
+
+/* confirmar badge destacado */
+.confirmar-badge{display:block;margin:18px auto 8px;background:var(--sage);border-radius:2px;padding:16px 20px;text-align:center;}
+.confirmar-badge-label{font-size:9px;font-weight:500;letter-spacing:3px;color:rgba(255,255,255,0.75);text-transform:uppercase;margin-bottom:7px;}
+.confirmar-badge-fecha{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;color:#ffffff;letter-spacing:2px;}
+
+.ornament{text-align:center;color:var(--sage-light);font-size:16px;margin:6px 0 16px;letter-spacing:6px;}
+
+/* footer dos líneas */
+.footer{padding:36px 40px;text-align:center;background:var(--cream);}
+.footer-ornament{color:var(--sage-light);font-size:14px;letter-spacing:8px;margin-bottom:16px;}
+.footer-nombres{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;letter-spacing:3px;color:var(--text-dark);text-transform:uppercase;margin-bottom:6px;}
+.footer-fecha{font-size:11px;font-weight:300;letter-spacing:4px;color:var(--text-muted);}
+
+@media(max-width:520px){
+  body{padding:0 0 40px;}
+  .card{border-radius:0;box-shadow:none;}
+  #hero-content{padding:48px 20px 44px;}
+  .hero-frame{padding:32px 20px 28px;}
+  .monogram{font-size:88px;}
+  .section{padding:32px 24px 28px;}
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- SOBRE -->
+  <button id="envelope-screen" type="button" aria-label="Abrir invitación" onclick="abrirSobre()">
+    <div class="env-wrap">
+      <div class="envelope" id="envelope">
+        <div class="env-body"></div>
+        <div class="env-bottom"></div>
+        <div class="env-left"></div>
+        <div class="env-right"></div>
+        <div class="env-letter">G&amp;A</div>
+        <div class="env-flap"></div>
+      </div>
+      <div class="env-tap-hint">Tocá para abrir</div>
+    </div>
+  </button>
+
+  <!-- HERO -->
+  <div id="hero-content">
+    <div class="hero-inner">
+      <div class="hero-frame">
+        <div class="nos-casamos">¡Nos casamos!</div>
+        <div class="monogram">G<span class="amp">&amp;</span>A</div>
+        <div class="nombres">Gisela &amp; Alejandro</div>
+        <div class="hero-divider"></div>
+        <div class="fecha-hero">01 · 11 · 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUERPO -->
+  <div id="card-body">
+
+    <div class="section">
+      <div class="section-title">La fecha</div>
+      <div class="section-sub">Anotá en tu agenda</div>
+      <div class="fecha-bloque">
+        <div class="fecha-parte">
+          <span class="fecha-label">Día</span>
+          <div class="fecha-valor" style="font-size:13px;margin-top:2px;">Domingo</div>
+        </div>
+        <div class="divider-v"></div>
+        <div class="fecha-parte">
+          <span class="fecha-label">Noviembre</span>
+          <div class="fecha-dia">01</div>
+        </div>
+        <div class="divider-v"></div>
+        <div class="fecha-parte">
+          <span class="fecha-label">Año</span>
+          <div class="fecha-valor" style="font-size:15px;margin-top:4px;">2026</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div class="tl-icon">⛪</div>
+          <div>
+            <div class="tl-hora">11:00 hs</div>
+            <div class="tl-titulo">Ceremonia religiosa</div>
+            <div class="tl-lugar">Capilla San Cayetano<br>San Buenaventura del Montealto 55, Resistencia, Chaco</div>
+            <a class="btn btn-small" href="https://maps.google.com/?q=San+Buenaventura+del+Montealto+55,+H3508,+H3504EHY+Resistencia,+Chaco" target="_blank" rel="noopener">¿Cómo llegar?</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div class="tl-icon">📜</div>
+          <div>
+            <div class="tl-hora">12:00 hs</div>
+            <div class="tl-titulo">Ceremonia civil</div>
+            <div class="tl-lugar">Salón Mirasoles<br>Av. Paraguay 553, Resistencia, Chaco</div>
+            <a class="btn btn-small" href="https://maps.google.com/?q=Av.+Paraguay+553,+H3500+Resistencia,+Chaco" target="_blank" rel="noopener">¿Cómo llegar?</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div class="tl-icon">🥂</div>
+          <div>
+            <div class="tl-hora">13:00 hs</div>
+            <div class="tl-titulo">Almuerzo y festejo</div>
+            <div class="tl-lugar">Salón Mirasoles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-alt">
+      <div class="section-title">Dress code</div>
+      <div class="section-sub">Elegante de día</div>
+      <div class="dress-texto">Sugerimos tonos vivos y estilo fresco y liviano para acompañar la estética de la celebración.</div>
+      <div class="dress-alerta">Les pedimos amablemente evitar los colores <strong>blanco, beige y nude</strong>, reservados para la novia.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Regalos</div>
+      <div style="text-align:center;font-size:36px;margin:8px 0 16px;line-height:1;">🎁</div>
+      <div class="body-texto">Para nosotros lo más importante es tu presencia, pero si quisieras hacernos un regalo, te dejamos nuestros datos bancarios.</div>
+      <button class="btn" id="btn-datos" type="button">Ver datos bancarios</button>
+      <div class="datos-box" id="datos-box">
+        <div class="dato-label">Alias</div>
+        <div class="dato-valor">gisela.dlf.mp</div>
+        <div class="dato-label">Titular</div>
+        <div class="dato-valor">Gisela de la Fuente</div>
+      </div>
+    </div>
+
+    <div class="section section-alt">
+      <div class="section-title">Música</div>
+      <div class="section-sub">Armá la playlist</div>
+      <div class="body-texto">Para que la fiesta sea completa, ayudanos eligiendo aquellas canciones que creés que no pueden faltar.</div>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfrjYgl9MP1_K494jMGmU_vMWabxSu3o_peBpt77FyHDqB57w/viewform?usp=header" target="_blank" rel="noopener">Sugerir una canción</a>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Te esperamos</div>
+      <div class="ornament">✦ ✦ ✦</div>
+      <div class="body-texto">Gracias por acompañarnos en este día tan especial.</div>
+      <div class="confirmar-badge">
+        <div class="confirmar-badge-label">Confirmá tu asistencia antes del</div>
+        <div class="confirmar-badge-fecha">15 · 09 · 2026</div>
+      </div>
+      <a class="btn btn-solid" href="https://docs.google.com/forms/d/e/1FAIpQLSdtpXbjOMbBk21-Nj4MoyFUhE2oViaxCP-Wwqk3OCmrn8fZXA/viewform" target="_blank" rel="noopener" style="margin-top:16px;">Confirmar asistencia</a>
+    </div>
+
+    <div class="footer">
+      <div class="footer-ornament">✦ ✦ ✦</div>
+      <div class="footer-nombres">Gisela &amp; Alejandro</div>
+      <div class="footer-fecha">01 · 11 · 2026</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var sobreAbierto = false;
+
+function abrirSobre() {
+  if (sobreAbierto) return;
+  sobreAbierto = true;
+  document.getElementById('envelope').classList.add('open');
+  var pantalla = document.getElementById('envelope-screen');
+  setTimeout(function() {
+    pantalla.style.transition = 'opacity 0.5s ease';
+    pantalla.style.opacity = '0';
+    setTimeout(function() {
+      pantalla.style.display = 'none';
+      document.getElementById('hero-content').classList.add('visible');
+      document.getElementById('card-body').classList.add('visible');
+    }, 500);
+  }, 1000);
+}
+
+/* triple cobertura: touchstart + touchend + click */
+var pantalla = document.getElementById('envelope-screen');
+pantalla.addEventListener('touchstart', function(e) { e.preventDefault(); abrirSobre(); }, { passive: false });
+pantalla.addEventListener('touchend',   function(e) { e.preventDefault(); }, { passive: false });
+pantalla.addEventListener('click',      abrirSobre);
+
+/* Datos bancarios */
+(function() {
+  var btn = document.getElementById('btn-datos');
+  var box = document.getElementById('datos-box');
+  function toggle() {
+    var open = box.classList.contains('open');
+    box.classList.toggle('open');
+    btn.textContent = open ? 'Ver datos bancarios' : 'Ocultar datos';
+  }
+  btn.addEventListener('touchstart', function(e){ e.preventDefault(); toggle(); }, { passive: false });
+  btn.addEventListener('click', toggle);
+})();
+</script>
+</body>
+</html>
